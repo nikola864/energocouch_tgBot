@@ -5,7 +5,7 @@ from aiogram.fsm.state import StatesGroup, State
 from aiogram.types import Message, ReplyKeyboardRemove, FSInputFile
 from aiogram.utils.keyboard import ReplyKeyboardBuilder, InlineKeyboardBuilder
 
-AUDIO_PATH = 'C:\\Users\\kolya\\OneDrive\\Desktop\\couch_bot\\main\\handlers\\Энергопрактика_Саши_Белякова.mp3'
+AUDIO_PATH = 'energocouch_tgBot\energocouch_tgBot\handlers\Энергопрактика_Саши_Белякова.mp3'
 CHANNEL_ID=-1002485471071
 router = Router()
 ADMIN_ID=519234410
@@ -161,7 +161,18 @@ async def cmd_course(message: types.Message):
         text='Энергокоучинг – Первая/Студенческая Энерготерапия с Сашей Беляковым – 3500 рублей',
         url='https://payform.ru/gd83KgR/')
     )
+    builder.row(types.InlineKeyboardButton(
+        text='Тариф «Ангел Изобилия» - 3333 рублей',
+        url='https://payform.ru/tf83Hgg/')
+    )
+    builder.row(types.InlineKeyboardButton(
+        text='Тариф «Серафим» - 11111 рублей',
+        url='https://payform.ru/3b83JDE/')
+    )
+
     await message.answer(
-        'Выбери услугу, Англел Сани)',
+        'Хорошего денёчка от энергичного Cанёчка'
+        '/n'
+        'Выбери услугу, Ангел Сани)',
         reply_markup=builder.as_markup(),
    )
