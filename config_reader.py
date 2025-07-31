@@ -1,10 +1,13 @@
-from pydantic_settings import BaseSettings, SettingsConfigDict
+from pydantic_settings import BaseSettings
 from pydantic import SecretStr
 
 class Settings(BaseSettings):
-    bot_token: SecretStr = "7993289579:AAHYqJgnNjC6JcdyWBTlDgstXIXJyPHe1as"
+    bot_token: SecretStr
+    app_name: str  # например: "my-awesome-bot" — имя сервиса на Render
+    port: int = 8080  # Render передаст PORT, но можно указать по умолчанию
 
-    model_config = SettingsConfigDict(env_file='../../main/.env', env_file_encoding='utf_8')
-
+    class Config:
+        env_file = ".env"
+        env_file_encoding = "utf-8"
 
 config = Settings()
