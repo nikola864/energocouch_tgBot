@@ -5,7 +5,7 @@ from aiogram.fsm.state import StatesGroup, State
 from aiogram.types import Message, ReplyKeyboardRemove, FSInputFile
 from aiogram.utils.keyboard import ReplyKeyboardBuilder, InlineKeyboardBuilder
 
-AUDIO_PATH = 'energocouch_tgBot\energocouch_tgBot\handlers\Энергопрактика_Саши_Белякова.mp3'
+AUDIO_PATH = "C:\\Users\\kolya\\OneDrive\\Desktop\\energocouch_tgBot\\energocouch_tgBot\\handlers\\Энергопрактика_Саши_Белякова.mp3"
 CHANNEL_ID=-1002485471071
 router = Router()
 ADMIN_ID=519234410
@@ -121,7 +121,8 @@ async def show_user_info_and_ask_subscription(message: Message, state: FSMContex
 
 @router.callback_query(Registration.waiting_for_confirmation, F.data == 'check_subscription')
 async def process_check_subscription(callback: types.CallbackQuery, state: FSMContext):
-    await callback.message.edit_text('Проверяю подписку...')
+    await callback.message.edit_text('Проверяю подписку...\n'
+                                     '(Это может занять до 15 секунд)')
     try:
         chat_member = await callback.bot.get_chat_member(chat_id=CHANNEL_ID, user_id=callback.from_user.id)
 
@@ -170,9 +171,31 @@ async def cmd_course(message: types.Message):
         url='https://payform.ru/3b83JDE/')
     )
 
+    builder.row(types.InlineKeyboardButton(
+        text='Психологическая сессия по методологии Академии репарационной психологии и терапии 2000 рублей',
+        url='https://payform.ru/908oCGZ/')
+    )
+    builder.row(types.InlineKeyboardButton(
+        text='Первая психологическая сессия по методологии Академии репарационной психологии и терапии, 1000 рублей',
+        url='https://payform.ru/de8oCZt/')
+    )
+    builder.row(types.InlineKeyboardButton(
+        text='Психологическое консультирование: метод Психомоторного письма и МАК-карты - 1000 рублей',
+        url='https://payform.ru/sm8oD7A/')
+    )
+    builder.row(types.InlineKeyboardButton(
+        text='«Психологическое консультирование: метод Психомоторного письма и МАК-карты» - 6000 рублей',
+        url='https://payform.ru/ao8oDea/')
+    )
+    builder.row(types.InlineKeyboardButton(
+        text='«Групповая онлайн-практика осознанного дыхания: занятие на платформе ZOOM - 500 рублей',
+        url='https://payform.ru/qb8oDmt/')
+    )
+
+
     await message.answer(
-        'Хорошего денёчка от энергичного Cанёчка'
-        '/n'
-        'Выбери услугу, Ангел Сани)',
+        'Выбери услугу, Ангел Сани)\n'
+        '\n'
+        'Хорошего денёчка от энергичного Cанёчка',
         reply_markup=builder.as_markup(),
    )

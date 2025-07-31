@@ -2,12 +2,8 @@ import asyncio
 import logging
 from aiogram import Bot, Dispatcher, types
 from aiogram.enums import ParseMode
-from aiogram.filters.command import Command
-from aiogram.utils.keyboard import ReplyKeyboardBuilder
-from aiogram.utils.keyboard import InlineKeyboardBuilder
 from config_reader import config
 from aiogram.client.default import DefaultBotProperties
-from aiogram import F
 
 from handlers import INFO_CLIENT
 
